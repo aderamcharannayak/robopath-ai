@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap";
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 200 20% 90%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 200 20% 90%;
+
+    --popover: 220 20% 10%;
+    --popover-foreground: 200 20% 90%;
+
+    --primary: 187 94% 43%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 330 81% 60%;
+    --secondary-foreground: 220 20% 7%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 187 94% 43%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 187 94% 43%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 200 20% 90%;
+    --sidebar-primary: 187 94% 43%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 200 20% 90%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 187 94% 43%;
+
+    /* Custom tokens */
+    --cyan: 187 94% 43%;
+    --magenta: 330 81% 60%;
+    --glass-bg: 220 20% 10%;
+    --glass-border: 220 15% 20%;
+    --glow-cyan: 0 0 20px hsl(187 94% 43% / 0.4);
+    --glow-magenta: 0 0 20px hsl(330 81% 60% / 0.4);
+
+    font-family: 'Rajdhani', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-xl border border-border rounded-lg;
+    box-shadow: 0 8px 32px hsl(220 20% 5% / 0.6), inset 0 1px 0 hsl(220 15% 25% / 0.3);
+  }
+
+  .glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+
+  .glow-magenta {
+    box-shadow: var(--glow-magenta);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--magenta)));
+  }
+
+  .border-glow {
+    border-image: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--magenta))) 1;
+  }
+
+  .cyber-btn {
+    @apply px-4 py-2 rounded-md font-semibold text-sm tracking-wider uppercase transition-all duration-200;
+    background: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--cyan) / 0.7));
+    color: hsl(var(--background));
+  }
+
+  .cyber-btn:hover {
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-1px);
+  }
+
+  .cyber-btn-magenta {
+    background: linear-gradient(135deg, hsl(var(--magenta)), hsl(var(--magenta) / 0.7));
+  }
+
+  .cyber-btn-magenta:hover {
+    box-shadow: var(--glow-magenta);
+  }
+
+  .stat-value {
+    font-family: 'Orbitron', sans-serif;
+    @apply text-2xl font-bold;
+  }
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  background: hsl(220 20% 5%) !important;
+}
+
+.leaflet-tile-pane {
+  filter: brightness(0.6) contrast(1.2) saturate(0.3) hue-rotate(180deg);
+}
+
+.leaflet-control-zoom a {
+  background: hsl(220 20% 10% / 0.9) !important;
+  color: hsl(187 94% 43%) !important;
+  border-color: hsl(220 15% 20%) !important;
+}
+
+.leaflet-control-attribution {
+  background: hsl(220 20% 10% / 0.8) !important;
+  color: hsl(220 10% 40%) !important;
+  font-size: 9px !important;
+}
+
+.leaflet-control-attribution a {
+  color: hsl(187 94% 43% / 0.6) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(220 20% 8%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(220 15% 25%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(187 94% 43% / 0.5);
+}
